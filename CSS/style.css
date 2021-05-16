@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Open+Sans+Condensed:ital,wght@1,300&family=Source+Sans+Pro:wght@600&display=swap');
+
+
+html,body
+{
+    background: rgb(6, 71, 63);
+    background: linear-gradient(90deg, rgb(10, 98, 104) 0%, rgba(65, 157, 163, 0.815) 100%);
+    overflow-x: hidden;
+    border-radius: 50px ;
+}
+
+#Nav
+{
+    width: 100%;
+    background:#252e2e7a;
+    padding: 10px;
+}
+
+#Nav li 
+{
+    display: inline-block;
+    margin-left: 10px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+}
+#Nav  li:first-child i
+{
+    font-size: 50px;
+    color: #68e2ce;
+}
+#Nav  li a
+{
+    text-decoration: none;
+    color:  rgb(53, 56, 56);
+    padding: 80px;
+    color: white;
+    
+}
+#Nav li a:hover
+{
+    background-color: #48f0cb;
+    border-radius: 5px;
+    color: white;
+    text-shadow:none;
+}
+#imgCon
+{
+    background-color: #56f0e3;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+}
+#imgCon img
+{
+    width: 300px;
+    height: 300px;
+    margin: 40px;
+    border-radius: 200px;
+}
+
+#imgCon img:hover
+{
+    cursor: pointer;
+    box-shadow: 0 0 10px #9bdce7;
+}
+#imgCon img:active
+{
+    width: 200px;
+    height: 200px;
+}
+
+#structur
+{
+    text-align: center;
+    color: white;
+    font-family: 'Dancing Script', cursive;
+     font-size: 18px;
+}
+
+
+
+#cont #report
+{
+    color: white;
+    font-size: 20px;
+}
+
+#botton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family: 'Dancing Script', cursive;
+	font-size:20px;
+    padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+    position: center;
+   
+}
+#botton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+#botton:active {
+	position:relative;
+	top:1px;
+}
+footer span
+{
+    font-family: 'Dancing Script', cursive;
+}
+footer
+{
+    text-align: center;
+    padding: 10px;
+    width: 98%;
+    height: 50px;
+    background-color: #252e2e7a;
+    border-radius: 50px ;
+    
+}
