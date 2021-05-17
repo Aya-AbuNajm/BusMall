@@ -126,9 +126,9 @@ function UserClick(event) {
 
 }
 
-botton.addEventListener('click',showResults);
+botton.addEventListener('click',result);
 
-function showResults(event)
+function result(event)
 {
     
     let ul=document.createElement('ul');
