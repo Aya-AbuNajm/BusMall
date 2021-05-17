@@ -1,35 +1,34 @@
 'use strict';
 
 
-// array to store all products (objects)
+
 let allProducts=[];
 
-// array to count how many unique image has shown
+
 let imagesCounter=[];
 
-// image variables 
+ 
 let leftImage , middleImage, rightImage;
 
-//get the element of img tags
+
 let leftImageElement , middleImageElement, rightImageElement;
 leftImageElement=document.getElementById('leftImage');
-middleImageElement=document.getElementById('middleImage');
 rightImageElement=document.getElementById('rightImage');
+middleImageElement=document.getElementById('middleImage');
 
-// get the button tag
+
 let btnResult=document.getElementById('btnResults');
 
-// get the result report container tag
 let parent=document.getElementById('resultReport');
 
-// maximum round number (25 round)
+
 let maxRound=25;
 
-// the user attempts
+
 let userAttempts=0;
 
-// constructor for products
-function Products (name,path,TimeImageShown)
+
+function Prodct (name,path,TimeImageShown)
 {
     this.name=name;
     this.path=path;
@@ -40,44 +39,42 @@ function Products (name,path,TimeImageShown)
 
 }
 
-new Products('bag','Asset/bag.jpg',0);
-new Products('banana','Asset/banana.jpg',0);
-new Products('bathroom','Asset/bathroom.jpg',0);
-new Products('boots','Asset/boots.jpg',0);
-new Products('breakfast','Asset/breakfast.jpg',0);
-new Products('bubblegum','Asset/bubblegum.jpg',0);
-new Products('dog-duck','Asset/dog-duck.jpg',0);
-new Products('dragon','Asset/dragon.jpg',0);
-new Products('pen','Asset/pen.jpg',0);
-new Products('pet-sweep','Asset/pet-sweep.jpg',0);
-new Products('scissors','Asset/scissors.jpg',0);
-new Products('tauntaun','Asset/tauntaun.jpg',0);
-new Products('unicorn','Asset/unicorn.jpg',0);
-new Products('water-can','Asset/water-can.jpg',0);
-new Products('wine-glass','Asset/wine-glass.jpg',0);
+new Prodct('bag','Asset/bag.jpg',0);
+new Prodct('banana','Asset/banana.jpg',0);
+new Prodct('bathroom','Asset/bathroom.jpg',0);
+new Prodct('boots','Asset/boots.jpg',0);
+new Prodct('breakfast','Asset/breakfast.jpg',0);
+new Prodct('bubblegum','Asset/bubblegum.jpg',0);
+new Prodct('dog-duck','Asset/dog-duck.jpg',0);
+new Prodct('dragon','Asset/dragon.jpg',0);
+new Prodct('pen','Asset/pen.jpg',0);
+new Prodct('pet-sweep','Asset/pet-sweep.jpg',0);
+new Prodct('scissors','Asset/scissors.jpg',0);
+new Prodct('tauntaun','Asset/tauntaun.jpg',0);
+new Prodct('unicorn','Asset/unicorn.jpg',0);
+new Prodct('water-can','Asset/water-can.jpg',0);
+new Prodct('wine-glass','Asset/wine-glass.jpg',0);
 
 console.log(allProducts);
 
-function randomizeProduct()
+function random()
 {
     return Math.floor(Math.random() * allProducts.length);
 }
 
-function renderProducts()
+function render()
 {
-    leftImage=randomizeProduct();
-    middleImage=randomizeProduct();
-    rightImage=randomizeProduct();
+    leftImage=random();
+    middleImage=random();
+    rightImage=random();
 
     do
     {
-        middleImage=randomizeProduct();
-        rightImage=randomizeProduct();
+        middleImage=random();
+        rightImage=random();
     }while(leftImage===middleImage || middleImage===rightImage || leftImage===rightImage )
 
-    // console.log(leftImage);
-    // console.log(middleImage);
-    // console.log(rightImage);
+
 
     leftImageElement.src=allProducts[leftImage].path;
     middleImageElement.src=allProducts[middleImage].path;
@@ -93,16 +90,16 @@ function renderProducts()
 
 }
 
-renderProducts();
+render();
 
 
-leftImageElement.addEventListener('click',handleUserClick);
-middleImageElement.addEventListener('click',handleUserClick);
-rightImageElement.addEventListener('click',handleUserClick);
+leftImageElement.addEventListener('click',UserClick);
+middleImageElement.addEventListener('click',UserClick);
+rightImageElement.addEventListener('click',UserClick);
 
-function handleUserClick(event) {
+function UserClick(event) {
 
-    // console.log(event.target.id);
+
     userAttempts++;
     if(userAttempts<maxRound)
     {
@@ -117,19 +114,19 @@ function handleUserClick(event) {
             allProducts[rightImage].votes=allProducts[rightImage].votes + 1; 
         }
     }else{
-        leftImageElement.removeEventListener('click', handleUserClick);
-        middleImageElement.removeEventListener('click', handleUserClick);
-        rightImageElement.removeEventListener('click', handleUserClick);
+        leftImageElement.removeEventListener('click', UserClick);
+        middleImageElement.removeEventListener('click', UserClick);
+        rightImageElement.removeEventListener('click', UserClick);
     }
 
     console.log(userAttempts);
     console.log(allProducts);
-    renderProducts();
+    render();
 
 
 }
 
-btnResult.addEventListener('click',showResults);
+botton.addEventListener('click',showResults);
 
 function showResults(event)
 {
