@@ -1,15 +1,13 @@
 'use strict';
 
 
+let leftImage , middleImage, rightImage;
+let imgCount=[];
 
 let allProducts=[];
 
-
-let imgCount=[];
-
- 
-let leftImage , middleImage, rightImage;
-
+let votesOfChar=[];
+let imageChart=[];
 
 let leftImageElement , middleImageElement, rightImageElement;
 leftImageElement=document.getElementById('leftImage');
@@ -131,30 +129,31 @@ botton.addEventListener('click',result);
 function result(event)
 {
     
-    let ul=document.createElement('ul');
-    
-    parent.appendChild(ul);
+   
     for (let i = 0; i < allProducts.length; i++) {
-        let li=document.createElement('li');
-        ul.appendChild(li);
-        li.textContent=`${allProducts[i].name} had ${allProducts[i].votes}, and was seen ${allProducts[i].TimeImageShown} times. `
-        
+        votesOfChart[i]=(allProducts[i].votes);
+        imageChart[i]=(allProducts[i].TimeImageShown);
+      
     }
     
     
 
 }
 
-// 
+// lab 12 add chart
+
+
+
+
 function chart() {
-    var ch = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: myImagesNames,
+            labels: productName,
             datasets: [{
                 label: '# of Votes',
-                data: myImagesVotes,
+                data: votesOfChart,
                 backgroundColor: [
                     'gray'
                 ],
@@ -162,11 +161,12 @@ function chart() {
                     'black'
                 ],
                 borderWidth: 1
-            }, {
-                label: '# of Views',
+            },
+            {
+                label: '# of img showen',
                 backgroundColor: 'white',
                 borderColor: 'black',
-                data: myImagesViews
+                data: shownImageChart
             }]
         },
 
@@ -180,3 +180,5 @@ function chart() {
     });
 
 }
+
+
