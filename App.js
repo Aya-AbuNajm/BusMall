@@ -5,7 +5,7 @@
 let allProducts=[];
 
 
-let imagesCounter=[];
+let imgCount=[];
 
  
 let leftImage , middleImage, rightImage;
@@ -17,9 +17,9 @@ rightImageElement=document.getElementById('rightImage');
 middleImageElement=document.getElementById('middleImage');
 
 
-let btnResult=document.getElementById('btnResults');
+let botton=document.getElementById('botton');
 
-let parent=document.getElementById('resultReport');
+let parent=document.getElementById('result');
 
 
 let maxRound=25;
@@ -104,10 +104,10 @@ function UserClick(event) {
     if(userAttempts<maxRound)
     {
         
-        if (event.target.id==='leftImage') {
+        if (event.target.section==='leftImage') {
             allProducts[leftImage].votes=allProducts[leftImage].votes + 1; 
         } 
-        else if(event.target.id==='middleImage') {
+        else if(event.target.section==='middleImage') {
             allProducts[middleImage].votes=allProducts[middleImage].votes + 1; 
         }
         else {
@@ -118,7 +118,7 @@ function UserClick(event) {
         middleImageElement.removeEventListener('click', UserClick);
         rightImageElement.removeEventListener('click', UserClick);
     }
-
+ 
     console.log(userAttempts);
     console.log(allProducts);
     render();
@@ -126,9 +126,9 @@ function UserClick(event) {
 
 }
 
-botton.addEventListener('click',showResults);
+botton.addEventListener('click',result);
 
-function showResults(event)
+function result(event)
 {
     
     let ul=document.createElement('ul');
@@ -142,5 +142,41 @@ function showResults(event)
     }
     
     
+
+}
+
+// 
+function chart() {
+    var ch = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: myImagesNames,
+            datasets: [{
+                label: '# of Votes',
+                data: myImagesVotes,
+                backgroundColor: [
+                    'gray'
+                ],
+                borderColor: [
+                    'black'
+                ],
+                borderWidth: 1
+            }, {
+                label: '# of Views',
+                backgroundColor: 'white',
+                borderColor: 'black',
+                data: myImagesViews
+            }]
+        },
+
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
 }

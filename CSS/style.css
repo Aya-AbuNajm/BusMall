@@ -23,11 +23,7 @@ html,body
     font-family: 'Dancing Script', cursive;
     font-size: 20px;
 }
-#Nav  li:first-child i
-{
-    font-size: 50px;
-    color: #68e2ce;
-}
+
 #Nav  li a
 {
     text-decoration: none;
