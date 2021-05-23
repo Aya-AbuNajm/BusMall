@@ -35,6 +35,21 @@
         </section>
 
 
+
+        <section id="conInt">
+            <form >
+                <label for="rnd">Enter a number of round ,  click save </label>
+                <input type="number" id="rnd" name="rnd" placeholder="Enter Round number" min="1">
+                <input type="submit" value="save">
+            </form>
+            <p id="massege" style="color: rgb(7, 255, 255);"></p>
+
+        </section>
+
+
+
+
+
         <section id="imgCon">
             <img id="rightImage" src="" alt="">
             <img id="leftImage" src="" alt="">
@@ -48,11 +63,27 @@
                 
             </section>
 
-            <button id="botton">
-                View Results
-            </button>
-        </section>
 
+            
+              <div id="result">
+                   <button id="botton" class="bot" >
+                   View Results
+                   </button>
+         
+                   <button id="newBotton" class="bot">
+                   New Round
+                    </button>
+                 </div>
+            </section>
+
+
+            
+       
+
+    </main>
+
+
+        
 
     </main>
 
@@ -63,5 +94,6 @@
     </footer>
 
     <script src="App.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
 </body>
 </html>
