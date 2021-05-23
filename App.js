@@ -1,25 +1,28 @@
 'use strict';
 
 
+let leftImage , middleImage, rightImage;
+let imgCount=[];
 
 let allProducts=[];
 
+let votesOfChar=[];
+let imageChart=[];
 
-let imgCount=[];
-
- 
-let leftImage , middleImage, rightImage;
-
+let specialImg = ['', '', ''];
+let productsTag = [ 'chair', 'shark', 'sweep', 'tauntaun','bag',  'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors','banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'unicorn', 'water-can', 'wine-glass'];
+// DOM 
 
 let leftImageElement , middleImageElement, rightImageElement;
 leftImageElement=document.getElementById('leftImage');
-rightImageElement=document.getElementById('rightImage');
+rightImageElement=document.getElementById('rightImage'); 
 middleImageElement=document.getElementById('middleImage');
 
 
 let botton=document.getElementById('botton');
+let newBotton=document.getElementById('newBotton');
 
-let parent=document.getElementById('result');
+let parent=document.getElementById('report');
 
 
 let maxRound=25;
@@ -27,6 +30,10 @@ let maxRound=25;
 
 let userAttempts=0;
 
+
+let vChart = [];
+let ImgChart = [];
+// ====== Constructor ===================
 
 function Prodct (name,path,TimeImageShown)
 {
@@ -39,21 +46,43 @@ function Prodct (name,path,TimeImageShown)
 
 }
 
-new Prodct('bag','Asset/bag.jpg',0);
-new Prodct('banana','Asset/banana.jpg',0);
-new Prodct('bathroom','Asset/bathroom.jpg',0);
-new Prodct('boots','Asset/boots.jpg',0);
-new Prodct('breakfast','Asset/breakfast.jpg',0);
-new Prodct('bubblegum','Asset/bubblegum.jpg',0);
-new Prodct('dog-duck','Asset/dog-duck.jpg',0);
-new Prodct('dragon','Asset/dragon.jpg',0);
-new Prodct('pen','Asset/pen.jpg',0);
-new Prodct('pet-sweep','Asset/pet-sweep.jpg',0);
-new Prodct('scissors','Asset/scissors.jpg',0);
-new Prodct('tauntaun','Asset/tauntaun.jpg',0);
-new Prodct('unicorn','Asset/unicorn.jpg',0);
-new Prodct('water-can','Asset/water-can.jpg',0);
-new Prodct('wine-glass','Asset/wine-glass.jpg',0);
+Products.allProducts = [];
+
+for (let i = 0; i < productsName.length; i++) {
+    if (productsTag[i] === 'sweep') {
+        new Products(productsTag[i], `Asset/${productsTag[i]}.png`, 0);
+    } else {
+        new Products(productsTag[i], `Asset/${productsTag[i]}.jpg`, 0);
+
+    }
+
+}
+
+
+
+
+
+localStorage.setItem('Products', JSON.stringify(Products.allProducts));
+    JSON.parse(localStorage.getItem('Products'));
+    let imageList = document.getElementById('imgBar');
+for (let i = 0; i < productsName.length; i++) {
+
+    let li = document.createElement('img');
+    li.setAttribute('class', 'imgbar');
+    if (productsTag[i] === 'sweep') {
+        li.setAttribute('src', `Asset/${productsTag[i]}.png`);
+    } else {
+        li.setAttribute('src', `Asset/${productsTag[i]}.jpg`);
+    }
+    
+    imageList.appendChild(li);
+    
+}
+
+
+
+
+
 
 console.log(allProducts);
 
@@ -85,7 +114,7 @@ function render()
        allProducts[middleImage].TimeImageShown= allProducts[middleImage].TimeImageShown + 1;
        allProducts[rightImage].TimeImageShown= allProducts[rightImage].TimeImageShown + 1;
         
-    
+       
 
 
 }
@@ -131,52 +160,72 @@ botton.addEventListener('click',result);
 function result(event)
 {
     
-    let ul=document.createElement('ul');
-    
-    parent.appendChild(ul);
+   
     for (let i = 0; i < allProducts.length; i++) {
-        let li=document.createElement('li');
-        ul.appendChild(li);
-        li.textContent=`${allProducts[i].name} had ${allProducts[i].votes}, and was seen ${allProducts[i].TimeImageShown} times. `
-        
+        votesOfChart[i]=(allProducts[i].votes);
+        imageChart[i]=(allProducts[i].TimeImageShown);
+      
     }
     
     
 
 }
 
-// 
-function chart() {
-    var ch = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: myImagesNames,
-            datasets: [{
-                label: '# of Votes',
-                data: myImagesVotes,
-                backgroundColor: [
-                    'gray'
-                ],
-                borderColor: [
-                    'black'
-                ],
-                borderWidth: 1
-            }, {
-                label: '# of Views',
-                backgroundColor: 'white',
-                borderColor: 'black',
-                data: myImagesViews
-            }]
-        },
+// lab 12 add chart
 
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// lab localStorage
+
+function local() {
+
+    let data = JSON.stringify(Products.allProducts);
+
+    localStorage.setItem('in', data);
 }
+
+
+function getElement() {
+    let stringObj = localStorage.getItem('in');
+
+    let obj = JSON.parse(stringObj);
+
+    if (obj !== null) {
+        Products.allProducts = obj;
+    }
+    render();
+}
+
+
+
+
+newBotton.addEventListener('click', function () {
+    vChart = [];
+    ImgChart = [];
+
+    localStorage.clear();
+    resetChart();
+    location.reload();
+});
+
+console.log(location);
+
+console.log(specialImg);
+
+getElement();
+
+
